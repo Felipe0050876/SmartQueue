@@ -1,0 +1,81 @@
+@model List<SmartQueue.Models.Turno>
+
+@{
+    ViewData["Title"] = "Turnos";
+    ViewBag.Seccion = "turnos";
+    var turnoActivo = ViewBag.TurnoActivo as SmartQueue.Models.Turno;
+}
+
+<div class="encabezado-pagina">
+    <div>
+        <h1>Cola de turnos</h1>
+        <p>Llame al siguiente turno y finalice la atencion actual.</p>
+    </div>
+</div>
+
+@if (TempData["Error"] != null)
+{
+    <div class="mensaje mensaje-error">@TempData["Error"]</div>
+}
+
+@if (turnoActivo != null)
+{
+    <div class="turno-activo">
+        <div class="codigo">@turnoActivo.Codigo</div>
+        <div class="datos">
+            <div class="cliente">@turnoActivo.SolicitudAtencion.NombreCliente</div>
+            <div class="detalle">@turnoActivo.SolicitudAtencion.Placa · @turnoActivo.SolicitudAtencion.ServicioSolicitado</div>
+        </div>
+        <partial name="_EstadoBadge" model="turnoActivo.Estado" />
+    </div>
+}
+
+<div class="barra-acciones">
+    <form asp-action="LlamarSiguiente" method="post">
+        <button type="submit" class="btn btn-primary" @(turnoActivo != null ? "disabled" : "")>Llamar siguiente</button>
+    </form>
+
+    @if (turnoActivo != null)
+    {
+        <form asp-action="FinalizarTurno" method="post">
+            <input type="hidden" name="id" value="@turnoActivo.Id" />
+            <button type="submit" class="btn btn-oscuro">Finalizar turno</button>
+        </form>
+    }
+</div>
+
+<div class="panel">
+    @if (Model.Count == 0)
+    {
+        <div class="vacio">
+            <div class="icono">···</div>
+            <p>No hay turnos en espera.</p>
+        </div>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Cliente</th>
+                    <th>Placa</th>
+                    <th>Servicio</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var turno in Model)
+                {
+                    <tr>
+                        <td class="codigo-turno">@turno.Codigo</td>
+                        <td>@turno.SolicitudAtencion.NombreCliente</td>
+                        <td>@turno.SolicitudAtencion.Placa</td>
+                        <td>@turno.SolicitudAtencion.ServicioSolicitado</td>
+                        <td><partial name="_EstadoBadge" model="turno.Estado" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
