@@ -1,0 +1,42 @@
+@{
+    ViewData["Title"] = "Panel";
+    ViewBag.Seccion = "panel";
+}
+
+<div class="encabezado-pagina">
+    <div>
+        <h1>Panel principal</h1>
+        <p>Resumen de la operación de turnos.</p>
+    </div>
+    <a class="btn btn-primary" asp-controller="Solicitudes" asp-action="Create">Nueva solicitud</a>
+</div>
+
+<div class="resumen">
+    <div class="caja acento">
+        <div class="valor mono">@ViewBag.EnEspera</div>
+        <div class="etiqueta">Turnos en espera</div>
+    </div>
+    <div class="caja">
+        <div class="valor mono">@ViewBag.EnServicio</div>
+        <div class="etiqueta">En servicio</div>
+    </div>
+    <div class="caja">
+        <div class="valor mono">@ViewBag.Finalizados</div>
+        <div class="etiqueta">Finalizados</div>
+    </div>
+</div>
+
+<div class="accesos">
+    <a class="acceso" asp-controller="Solicitudes" asp-action="Index">
+        <h3>Solicitudes de atención</h3>
+        <p>Registrar y administrar clientes, vehículos y servicios.</p>
+    </a>
+    <a class="acceso" asp-controller="Turnos" asp-action="Index">
+        <h3>Cola de turnos</h3>
+        <p>Llamar al siguiente turno y finalizar la atención actual.</p>
+    </a>
+    <a class="acceso" asp-controller="Historial" asp-action="Index">
+        <h3>Historial</h3>
+        <p>Consultar las atenciones finalizadas anteriormente.</p>
+    </a>
+</div>
