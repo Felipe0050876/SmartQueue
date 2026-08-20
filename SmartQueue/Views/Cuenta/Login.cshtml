@@ -1,0 +1,45 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Iniciar sesión";
+}
+
+<div class="login-wrap">
+    <div class="login-card">
+        <div class="login-marca">
+            <span class="marca">SQ</span>
+            <div>
+                <div class="titulo">SmartQueue</div>
+                <div class="subtitulo">Gestión de turnos · Servicio automotriz</div>
+            </div>
+        </div>
+
+        <h1>Iniciar sesión</h1>
+        <p class="intro">Ingrese sus credenciales para acceder al sistema.</p>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="mensaje-error">@ViewBag.Error</div>
+        }
+
+        <form asp-action="Login" method="post">
+
+            <div class="mb-3">
+                <label class="form-label" asp-for="Correo">Correo</label>
+                <input class="form-control" asp-for="Correo" autofocus />
+                <span class="text-danger" asp-validation-for="Correo"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" asp-for="Contrasena">Contraseña</label>
+                <input class="form-control" asp-for="Contrasena" type="password" />
+                <span class="text-danger" asp-validation-for="Contrasena"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
