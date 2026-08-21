@@ -1,0 +1,68 @@
+﻿@model List<Turno>
+@{
+    ViewData["Title"] = "Historial";
+    ViewBag.Seccion = "historial";
+}
+
+<div class="encabezado-pagina">
+    <div>
+        <h1>Historial de atenciones</h1>
+        <p>Turnos finalizados, del más reciente al más antiguo.</p>
+    </div>
+</div>
+
+<form class="buscador" asp-action="Index" method="get">
+    <input class="form-control" type="text" name="busqueda" value="@ViewBag.Busqueda"
+           placeholder="Buscar por placa o nombre del cliente" />
+    <button type="submit" class="btn btn-oscuro">Buscar</button>
+    @if (!string.IsNullOrWhiteSpace(ViewBag.Busqueda as string))
+    {
+        <a class="btn btn-secundario" asp-action="Index">Limpiar</a>
+    }
+</form>
+
+@if (!Model.Any())
+{
+    <div class="tabla-panel">
+        <div class="vacio">
+            <div class="icono">—</div>
+            No hay turnos finalizados para mostrar.
+        </div>
+    </div>
+}
+else
+{
+    <div class="tabla-panel">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Turno</th>
+                    <th>Cliente</th>
+                    <th>Identificación</th>
+                    <th>Placa</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Servicio</th>
+                    <th>Inicio</th>
+                    <th>Finalización</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var turno in Model)
+                {
+                    <tr>
+                        <td class="codigo-turno">@turno.Codigo</td>
+                        <td>@turno.SolicitudAtencion.NombreCliente</td>
+                        <td>@turno.SolicitudAtencion.IdentificacionCliente</td>
+                        <td>@turno.SolicitudAtencion.Placa</td>
+                        <td>@turno.SolicitudAtencion.Marca</td>
+                        <td>@turno.SolicitudAtencion.Modelo</td>
+                        <td>@turno.SolicitudAtencion.ServicioSolicitado</td>
+                        <td class="mono">@(turno.FechaInicioAtencion.HasValue ? turno.FechaInicioAtencion.Value.ToString("dd/MM/yyyy HH:mm") : "-")</td>
+                        <td class="mono">@(turno.FechaFinalizacion.HasValue ? turno.FechaFinalizacion.Value.ToString("dd/MM/yyyy HH:mm") : "-")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
