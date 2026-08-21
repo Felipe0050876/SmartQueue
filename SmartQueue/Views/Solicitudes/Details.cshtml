@@ -1,0 +1,56 @@
+@model SolicitudAtencion
+@{
+    ViewData["Title"] = "Detalle de solicitud";
+    ViewBag.Seccion = "solicitudes";
+    var estado = Model.Turno != null ? Model.Turno.Estado : "Esperando";
+}
+
+<div class="encabezado-pagina">
+    <div>
+        <h1>Detalle de solicitud</h1>
+        <p>Información registrada del cliente y el vehículo.</p>
+    </div>
+    <a class="btn btn-secundario" asp-action="Index">Volver</a>
+</div>
+
+<div class="panel" style="max-width: 760px;">
+    <dl class="detalle-lista">
+        <dt>Turno</dt>
+        <dd class="codigo-turno">@(Model.Turno != null ? Model.Turno.Codigo : "-")</dd>
+
+        <dt>Estado</dt>
+        <dd><partial name="_EstadoBadge" model="estado" /></dd>
+
+        <dt>Nombre del cliente</dt>
+        <dd>@Model.NombreCliente</dd>
+
+        <dt>Identificación</dt>
+        <dd>@Model.IdentificacionCliente</dd>
+
+        <dt>Teléfono</dt>
+        <dd>@Model.Telefono</dd>
+
+        <dt>Placa</dt>
+        <dd>@Model.Placa</dd>
+
+        <dt>Marca</dt>
+        <dd>@Model.Marca</dd>
+
+        <dt>Modelo</dt>
+        <dd>@Model.Modelo</dd>
+
+        <dt>Año</dt>
+        <dd>@Model.Anio</dd>
+
+        <dt>Servicio solicitado</dt>
+        <dd>@Model.ServicioSolicitado</dd>
+
+        <dt>Fecha de creación</dt>
+        <dd class="mono">@Model.FechaCreacion.ToString("dd/MM/yyyy HH:mm")</dd>
+    </dl>
+
+    <div class="form-acciones">
+        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+        <a class="btn btn-peligro" asp-action="Delete" asp-route-id="@Model.Id">Eliminar</a>
+    </div>
+</div>
