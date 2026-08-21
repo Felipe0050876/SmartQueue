@@ -1,0 +1,633 @@
+/* ============================================================
+   SmartQueue - identidad visual
+   Paleta y tipografia centralizadas aqui para cambiarlas facil.
+   ============================================================ */
+
+:root {
+    /* Colores base (grafito y acero, tono frio) */
+    --ink: #16191d;
+    --slate: #232b33;
+    --slate-2: #2e3944;
+    --steel: #6b7480;
+    --line: #dadde1;
+    --cloud: #eceef0;
+    --surface: #ffffff;
+
+    /* Acento ambar (industrial, usado con moderacion) */
+    --accent: #e08a1e;
+    --accent-hover: #c4760f;
+
+    /* Estados */
+    --espera-bg: #eceef0;
+    --espera-tx: #4a5560;
+    --servicio-bg: #fbe8cc;
+    --servicio-tx: #8a5309;
+    --final-bg: #dcefe2;
+    --final-tx: #1f6b3d;
+
+    --radio: 6px;
+}
+
+/* ---------- Base ---------- */
+body {
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    background-color: var(--cloud);
+    color: var(--ink);
+    font-size: 15px;
+    margin: 0;
+    min-height: 100vh;
+}
+
+a {
+    color: var(--accent-hover);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.mono {
+    font-family: 'IBM Plex Mono', 'Consolas', 'Courier New', monospace;
+}
+
+/* ---------- Barra superior ---------- */
+.topbar {
+    background-color: var(--slate);
+    color: #fff;
+    border-bottom: 3px solid var(--accent);
+}
+
+.topbar-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+}
+
+.brand:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.brand .marca {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: var(--accent);
+    color: #16191d;
+    border-radius: var(--radio);
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 6px;
+    margin-left: 10px;
+}
+
+.nav-menu a {
+    color: #c6ccd2;
+    padding: 8px 14px;
+    border-radius: var(--radio);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.nav-menu a:hover {
+    color: #fff;
+    background: var(--slate-2);
+    text-decoration: none;
+}
+
+.nav-menu a.activo {
+    color: #fff;
+    background: var(--slate-2);
+}
+
+.topbar-user {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #c6ccd2;
+    font-size: 0.9rem;
+}
+
+.topbar-user .salir {
+    color: #c6ccd2;
+    border: 1px solid #3d4854;
+    padding: 6px 12px;
+    border-radius: var(--radio);
+}
+
+.topbar-user .salir:hover {
+    color: #fff;
+    border-color: var(--steel);
+    text-decoration: none;
+}
+
+/* ---------- Contenedor principal ---------- */
+.contenido {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 34px 24px 60px;
+}
+
+.encabezado-pagina {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    gap: 16px;
+}
+
+.encabezado-pagina h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+.encabezado-pagina p {
+    margin: 4px 0 0;
+    color: var(--steel);
+    font-size: 0.92rem;
+}
+
+/* ---------- Tarjetas / paneles ---------- */
+.panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radio);
+    padding: 22px;
+}
+
+.panel + .panel {
+    margin-top: 20px;
+}
+
+/* ---------- Tablas ---------- */
+.table {
+    margin-bottom: 0;
+    color: var(--ink);
+}
+
+.table thead th {
+    background: #f5f6f7;
+    color: var(--steel);
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--line);
+    padding: 12px 14px;
+    white-space: nowrap;
+}
+
+.table tbody td {
+    padding: 13px 14px;
+    border-bottom: 1px solid #eef0f2;
+    vertical-align: middle;
+}
+
+.table tbody tr:hover td {
+    background: #fafbfc;
+}
+
+.codigo-turno {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    color: var(--slate);
+}
+
+/* ---------- Botones ---------- */
+.btn {
+    border-radius: var(--radio);
+    font-weight: 500;
+    font-size: 0.92rem;
+    padding: 8px 16px;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: #16191d;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: #fff;
+}
+
+.btn-secundario {
+    background-color: #fff;
+    border: 1px solid var(--line);
+    color: var(--slate);
+}
+
+.btn-secundario:hover {
+    background-color: #f5f6f7;
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.btn-oscuro {
+    background-color: var(--slate);
+    border-color: var(--slate);
+    color: #fff;
+}
+
+.btn-oscuro:hover {
+    background-color: var(--slate-2);
+    color: #fff;
+}
+
+.btn-peligro {
+    background-color: #fff;
+    border: 1px solid #e3b4b4;
+    color: #b4322f;
+}
+
+.btn-peligro:hover {
+    background-color: #b4322f;
+    border-color: #b4322f;
+    color: #fff;
+}
+
+.btn-sm {
+    padding: 5px 11px;
+    font-size: 0.85rem;
+}
+
+.acciones-fila {
+    display: flex;
+    gap: 6px;
+}
+
+/* ---------- Estados (badges) ---------- */
+.estado {
+    display: inline-block;
+    padding: 4px 11px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.estado-esperando {
+    background: var(--espera-bg);
+    color: var(--espera-tx);
+}
+
+.estado-servicio {
+    background: var(--servicio-bg);
+    color: var(--servicio-tx);
+}
+
+.estado-finalizado {
+    background: var(--final-bg);
+    color: var(--final-tx);
+}
+
+/* ---------- Formularios ---------- */
+.form-label {
+    font-weight: 500;
+    font-size: 0.88rem;
+    color: var(--slate);
+    margin-bottom: 5px;
+}
+
+.form-control {
+    border: 1px solid var(--line);
+    border-radius: var(--radio);
+    padding: 9px 12px;
+    font-size: 0.95rem;
+}
+
+.form-control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(224, 138, 30, 0.15);
+}
+
+.text-danger {
+    font-size: 0.83rem;
+}
+
+/* ---------- Mensajes ---------- */
+.mensaje {
+    background: #fef7ea;
+    border: 1px solid #f0d9a8;
+    color: #8a5309;
+    padding: 12px 16px;
+    border-radius: var(--radio);
+    margin-bottom: 20px;
+    font-size: 0.92rem;
+}
+
+.mensaje-error {
+    background: #fdecec;
+    border: 1px solid #f0bcbc;
+    color: #b4322f;
+    padding: 12px 16px;
+    border-radius: var(--radio);
+    margin-bottom: 18px;
+    font-size: 0.92rem;
+}
+
+/* ---------- Estado vacio ---------- */
+.vacio {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--steel);
+}
+
+.vacio .icono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.8rem;
+    color: var(--line);
+    margin-bottom: 8px;
+}
+
+/* ---------- Login ---------- */
+.login-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        linear-gradient(180deg, #1d242b 0%, #232b33 100%);
+    padding: 24px;
+}
+
+.login-card {
+    background: var(--surface);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    padding: 38px 34px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+.login-marca {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-bottom: 26px;
+}
+
+.login-marca .marca {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: var(--accent);
+    color: #16191d;
+    border-radius: var(--radio);
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.login-marca .titulo {
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.login-marca .subtitulo {
+    color: var(--steel);
+    font-size: 0.8rem;
+}
+
+.login-card h1 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.login-card .intro {
+    color: var(--steel);
+    font-size: 0.9rem;
+    margin-bottom: 22px;
+}
+
+/* ---------- Panel principal (dashboard) ---------- */
+.resumen {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.resumen .caja {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radio);
+    padding: 20px;
+}
+
+.resumen .caja .valor {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.resumen .caja .etiqueta {
+    color: var(--steel);
+    font-size: 0.85rem;
+    margin-top: 8px;
+}
+
+.resumen .caja.acento {
+    border-top: 3px solid var(--accent);
+}
+
+.accesos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.acceso {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radio);
+    padding: 22px;
+    color: var(--ink);
+}
+
+.acceso:hover {
+    border-color: var(--accent);
+    text-decoration: none;
+    color: var(--ink);
+}
+
+.acceso h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0 0 6px;
+}
+
+.acceso p {
+    color: var(--steel);
+    font-size: 0.88rem;
+    margin: 0;
+}
+
+/* ---------- Turno en servicio (destacado) ---------- */
+.turno-activo {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    background: var(--slate);
+    color: #fff;
+    border-radius: var(--radio);
+    padding: 22px 26px;
+    margin-bottom: 22px;
+}
+
+.turno-activo .codigo {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.turno-activo .datos .cliente {
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.turno-activo .datos .detalle {
+    color: #aeb6bd;
+    font-size: 0.9rem;
+    margin-top: 3px;
+}
+
+.turno-activo .estado {
+    margin-left: auto;
+}
+
+/* ---------- Barra de acciones de turnos ---------- */
+.barra-acciones {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+/* ---------- Buscador ---------- */
+.buscador {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.buscador .form-control {
+    max-width: 340px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 820px) {
+    .resumen,
+    .accesos {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar-inner {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 12px 16px;
+        gap: 12px;
+    }
+
+    .nav-menu {
+        order: 3;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .contenido {
+        padding: 22px 16px 40px;
+    }
+
+    .turno-activo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .turno-activo .estado {
+        margin-left: 0;
+    }
+}
+
+/* ---------- Panel que contiene una tabla ---------- */
+.tabla-panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radio);
+    overflow: hidden;
+}
+
+/* ---------- Formulario en dos columnas ---------- */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
+}
+
+.form-grid .completo {
+    grid-column: 1 / -1;
+}
+
+.form-acciones {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+@media (max-width: 640px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- Lista de detalle ---------- */
+.detalle-lista {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    row-gap: 12px;
+    column-gap: 16px;
+}
+
+.detalle-lista dt {
+    color: var(--steel);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.detalle-lista dd {
+    margin: 0;
+    font-weight: 500;
+}

@@ -1,0 +1,13 @@
+@model string
+@{
+    string clase = "estado-esperando";
+    if (Model == "En servicio")
+    {
+        clase = "estado-servicio";
+    }
+    else if (Model == "Finalizado")
+    {
+        clase = "estado-finalizado";
+    }
+}
+<span class="estado @clase">@Model</span>
