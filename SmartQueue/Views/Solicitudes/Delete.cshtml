@@ -1,0 +1,43 @@
+@model SolicitudAtencion
+@{
+    ViewData["Title"] = "Eliminar solicitud";
+    ViewBag.Seccion = "solicitudes";
+}
+
+<div class="encabezado-pagina">
+    <div>
+        <h1>Eliminar solicitud</h1>
+        <p>Esta acción también eliminará el turno asociado.</p>
+    </div>
+</div>
+
+<div class="panel" style="max-width: 620px;">
+    <div class="mensaje-error">
+        ¿Está seguro de que desea eliminar esta solicitud? No se puede deshacer.
+    </div>
+
+    <dl class="detalle-lista">
+        <dt>Turno</dt>
+        <dd class="codigo-turno">@(Model.Turno != null ? Model.Turno.Codigo : "-")</dd>
+
+        <dt>Cliente</dt>
+        <dd>@Model.NombreCliente</dd>
+
+        <dt>Placa</dt>
+        <dd>@Model.Placa</dd>
+
+        <dt>Vehículo</dt>
+        <dd>@Model.Marca @Model.Modelo (@Model.Anio)</dd>
+
+        <dt>Servicio</dt>
+        <dd>@Model.ServicioSolicitado</dd>
+    </dl>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <div class="form-acciones">
+            <button type="submit" class="btn btn-peligro">Eliminar definitivamente</button>
+            <a class="btn btn-secundario" asp-action="Index">Cancelar</a>
+        </div>
+    </form>
+</div>

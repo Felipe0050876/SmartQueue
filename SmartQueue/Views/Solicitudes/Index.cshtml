@@ -1,0 +1,60 @@
+@model List<SolicitudAtencion>
+@{
+    ViewData["Title"] = "Solicitudes";
+    ViewBag.Seccion = "solicitudes";
+}
+
+<div class="encabezado-pagina">
+    <div>
+        <h1>Solicitudes de atención</h1>
+        <p>Clientes, vehículos y servicios registrados.</p>
+    </div>
+    <a class="btn btn-primary" asp-action="Create">Nueva solicitud</a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="tabla-panel">
+        <div class="vacio">
+            <div class="icono">—</div>
+            No hay solicitudes registradas todavía.
+        </div>
+    </div>
+}
+else
+{
+    <div class="tabla-panel">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Turno</th>
+                    <th>Cliente</th>
+                    <th>Placa</th>
+                    <th>Vehículo</th>
+                    <th>Servicio</th>
+                    <th>Estado</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var solicitud in Model)
+                {
+                    var estado = solicitud.Turno != null ? solicitud.Turno.Estado : "Esperando";
+                    <tr>
+                        <td class="codigo-turno">@(solicitud.Turno != null ? solicitud.Turno.Codigo : "-")</td>
+                        <td>@solicitud.NombreCliente</td>
+                        <td>@solicitud.Placa</td>
+                        <td>@solicitud.Marca @solicitud.Modelo (@solicitud.Anio)</td>
+                        <td>@solicitud.ServicioSolicitado</td>
+                        <td><partial name="_EstadoBadge" model="estado" /></td>
+                        <td class="acciones-fila">
+                            <a class="btn btn-sm btn-secundario" asp-action="Details" asp-route-id="@solicitud.Id">Ver</a>
+                            <a class="btn btn-sm btn-secundario" asp-action="Edit" asp-route-id="@solicitud.Id">Editar</a>
+                            <a class="btn btn-sm btn-peligro" asp-action="Delete" asp-route-id="@solicitud.Id">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
