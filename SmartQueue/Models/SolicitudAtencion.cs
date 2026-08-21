@@ -30,9 +30,9 @@ namespace SmartQueue.Models
         [Display(Name = "Modelo")]
         public string Modelo { get; set; }
 
-        [Required(ErrorMessage = "El anio es obligatorio.")]
-        [Range(1900, 2100, ErrorMessage = "Ingrese un anio valido.")]
-        [Display(Name = "Anio")]
+        [Required(ErrorMessage = "El año es obligatorio.")]
+        [Range(1900, 2100, ErrorMessage = "Ingrese un año valido.")]
+        [Display(Name = "Año")]
         public int Anio { get; set; }
 
         [Required(ErrorMessage = "El servicio solicitado es obligatorio.")]
