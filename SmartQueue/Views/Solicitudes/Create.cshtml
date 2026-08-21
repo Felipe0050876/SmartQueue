@@ -1,0 +1,70 @@
+@model SolicitudAtencion
+@{
+    ViewData["Title"] = "Nueva solicitud";
+    ViewBag.Seccion = "solicitudes";
+}
+
+<div class="encabezado-pagina">
+    <div>
+        <h1>Nueva solicitud de atención</h1>
+        <p>Al guardar, el sistema generará automáticamente el turno.</p>
+    </div>
+</div>
+
+<div class="panel" style="max-width: 760px;">
+    <form asp-action="Create" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-grid">
+            <div>
+                <label class="form-label" asp-for="NombreCliente"></label>
+                <input class="form-control" asp-for="NombreCliente" />
+                <span class="text-danger" asp-validation-for="NombreCliente"></span>
+            </div>
+            <div>
+                <label class="form-label" asp-for="IdentificacionCliente"></label>
+                <input class="form-control" asp-for="IdentificacionCliente" />
+                <span class="text-danger" asp-validation-for="IdentificacionCliente"></span>
+            </div>
+            <div>
+                <label class="form-label" asp-for="Telefono"></label>
+                <input class="form-control" asp-for="Telefono" />
+                <span class="text-danger" asp-validation-for="Telefono"></span>
+            </div>
+            <div>
+                <label class="form-label" asp-for="Placa"></label>
+                <input class="form-control" asp-for="Placa" />
+                <span class="text-danger" asp-validation-for="Placa"></span>
+            </div>
+            <div>
+                <label class="form-label" asp-for="Marca"></label>
+                <input class="form-control" asp-for="Marca" />
+                <span class="text-danger" asp-validation-for="Marca"></span>
+            </div>
+            <div>
+                <label class="form-label" asp-for="Modelo"></label>
+                <input class="form-control" asp-for="Modelo" />
+                <span class="text-danger" asp-validation-for="Modelo"></span>
+            </div>
+            <div>
+                <label class="form-label" asp-for="Anio"></label>
+                <input class="form-control" asp-for="Anio" />
+                <span class="text-danger" asp-validation-for="Anio"></span>
+            </div>
+            <div class="completo">
+                <label class="form-label" asp-for="ServicioSolicitado"></label>
+                <input class="form-control" asp-for="ServicioSolicitado" />
+                <span class="text-danger" asp-validation-for="ServicioSolicitado"></span>
+            </div>
+        </div>
+
+        <div class="form-acciones">
+            <button type="submit" class="btn btn-primary">Guardar solicitud</button>
+            <a class="btn btn-secundario" asp-action="Index">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
